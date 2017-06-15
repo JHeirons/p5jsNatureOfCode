@@ -6,7 +6,7 @@ function setup() {
 }
 
 function draw() {
-    background(0);
+    background(225);
     walker.display();
     walker.walk();
 }
