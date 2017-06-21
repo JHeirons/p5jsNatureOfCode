@@ -25,8 +25,8 @@ var len = 200;
 var hit;
 
 function setup()  {
-  createCanvas(640,360);
-    for(var i = 0; i < 3; i++) {
+  createCanvas(800,360);
+    for(var i = 0; i < 5; i++) {
         p[i] = new Pendulum(createVector(x,y), len);
         x += 50;
     }
@@ -37,20 +37,17 @@ function setup()  {
 
 function draw() {
   background(51);
-    for(var z =0; z < p.length; z++){
-        p[z].update();
-        p[z].drag();
-        p[z].display();
-    }
-    for(var i = 0; i < p.length-1; i++){
-        for (var j = 1; j < p.length; j++){
-            hit = p[i].collision(p[j]);
-            if(hit == true) {
+    for(var i = 0; i < p.length; i++){
+        p[i].update();
+        p[i].drag();
+        p[i].display();
+        for (var j = 0; j < p.length; j++){
+            if(i != j && p[i].collision(p[j])) {
                 var newVel = p[i].v1(p[j]);
                 p[j].v2(newVel);
             }
-        } 
-    } 
+        }
+    }
     
 }
 

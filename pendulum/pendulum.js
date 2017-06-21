@@ -14,11 +14,11 @@ function Pendulum(origin_, r_) {
     this.position = createVector();
     this.r = r_;
     this.angle = 0;
-    this.mass = 1;
+    this.mass = 5;
 
     this.aVelocity = 0.0;
     this.aAcceleration = 0.0;
-    //this.damping = 0.995;   // Arbitrary damping
+    //this.damping = 0.999;   // Arbitrary damping
     this.ballr = 48.0;      // Arbitrary ball radius
 
     this.dragging = false;
@@ -53,7 +53,7 @@ function Pendulum(origin_, r_) {
     this.collision = function(p2) {
         var collide;
         var d = dist(this.position.x, this.position.y, p2.position.x, p2.position.y);
-        if (d < 49) {
+        if (d < this.ballr) {
             this.col = color(255, 204, 0);
             var collide = true;
         }
